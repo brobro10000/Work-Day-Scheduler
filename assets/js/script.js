@@ -5,7 +5,7 @@ var meridiem
 function currentDate() {
     $("#currentDay").text(moment().format("dddd MMMM  DD, YYYY"))
     setInterval(function(){
-    return $("#currentTime").text(moment().format("HH:MM:ss.SS"))
+    return $("#currentTime").text(moment().format("hh:MM:ss.SS A"))
     },10);
 }
 currentDate()
@@ -17,7 +17,6 @@ function hourCreator(i,time,meridiem) {
     return $("<h2>").text(time+meridiem).attr("class","hour").appendTo($("#"+i))
 }
 function populateTime(i,time){
-
     if(i< 12)
     {   
         meridiem = "AM"
@@ -42,15 +41,13 @@ function scheduleCreator() {
     divCreator(i)
     if(i < 13){
     meridiem = "AM"
-    hourCreator(i,time,meridiem)
     }
     else if(i>12)
     {
         meridiem = "PM"
-        hourCreator(i,time,meridiem)
-    }
+    }   
+    hourCreator(i,time,meridiem)
     time++
-
 }
     
 }
