@@ -31,7 +31,7 @@ function populateTime(i, time) {
 function formCreator(i) {
     $("<form>").attr({ "class": "row", "id": "form" + i }).appendTo($("#div" + i))
     $("<input>").attr("id", "input" + i).appendTo($("#form" + i))
-    $("<button>").attr({"id":"submit" + i, "class":"saveBtn"}).appendTo($("#form" + i))
+    $("<button>").text("Save").attr({"id":"submit" + i, "class":"saveBtn"}).appendTo($("#form" + i))
     if (i < currentHour) {
         $("#input" + i).attr("class", "past")
     } else if (i == currentHour) {
