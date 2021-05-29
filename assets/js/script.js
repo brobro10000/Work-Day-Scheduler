@@ -15,6 +15,7 @@ var submitData = {
     17:"",
     18:"",
 }
+
 function currentDate() {
     $("#currentDay").text(moment().format("dddd MMMM  DD, YYYY"))
     setInterval(function () {
@@ -43,8 +44,9 @@ function populateTime(i, time) {
 
 function formCreator(i) {
     $("<form>").attr({ "class": "row", "id": "form" + i }).appendTo($("#div" + i))
-    $("<input>").text("test").attr({"id":"input" + i, "type":"text"}).appendTo($("#form" + i))
-    $("<button>").text("Save").attr({"type":"button" , "id":"submit" + i, "class":"saveBtn"}).appendTo($("#form" + i))
+    $("<input>").attr({"id":"input" + i, "type":"text"}).appendTo($("#form" + i))
+    $("<button>").text("Save").attr({"type":"button" , "id":"submit" + i, "class":"saveBtn clicked"}).appendTo($("#form" + i))
+    loadData(submitData)
     if (i < currentHour) {
         $("#input" + i).attr("class", "past")
     } else if (i == currentHour) {
@@ -70,39 +72,44 @@ function scheduleCreator() {
         time++
     }
 }
-
-function startProgram(){  
-currentDate()
-scheduleCreator()
-saveData()
-}
-
-startProgram(submitData)
 function populateArray(submitData){
 for(var i = timeStart; i<=timeEnd;i++)
 {
     submitData[i] = $("#input"+i)
 }
-    saveData(submitData)
     return submitData
 }
-
-function saveData(submitData) {
-    localStorage.setItem("dailyData", JSON.stringify(submitData))
+function startProgram(){  
+currentDate()
+scheduleCreator()
+populateArray(submitData) 
 }
 
+function saveData(submitData) 
+{
+    submitData = populateArray(submitData)
+    for(var i = timeStart; i<=timeEnd;i++)
+    localStorage.setItem("dailyData"+i, submitData[i].val())
+}
 
+function loadData(submitData) {
+    for(var i = timeStart; i<=timeEnd;i++){
+    submitData[i] = localStorage.getItem("dailyData"+i)
+    $("#input"+i).attr("value",submitData[i])
+    }
+}
 function onButtonClick(){
 for(var i = timeStart; i<=timeEnd;i++)
 {
 $("#submit"+i).on("click", function(submitData){
     submitData[i] = $("#input"+i).val()
-    saveData(submitData)
 });
 }
+return saveData(submitData)
 }
 
-populateArray(submitData) 
-onButtonClick()
+startProgram()
 
-
+$(".clicked").on("click",function(){
+    onButtonClick()
+})
