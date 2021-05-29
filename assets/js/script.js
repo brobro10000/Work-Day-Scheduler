@@ -1,20 +1,8 @@
-const timeStart = 8
-const timeEnd = 18
+const timeStart = 9
+const timeEnd = 17
 var currentHour = moment().format("HH")
 var meridiem
-var submitData = {
-    8: "",
-    9: "",
-    10: "",
-    11: "",
-    12: "",
-    13: "",
-    14: "",
-    15: "",
-    16: "",
-    17: "",
-    18: "",
-}
+var submitData = {}
 function currentDate() {
     $("#currentDay").text(moment().format("dddd MMMM  DD, YYYY"))
     setInterval(function () {
@@ -41,7 +29,7 @@ function populateTime(i, time) {
     return time
 }
 function formCreator(i) {
-    $("<input>").attr({ "id": "input" + i, "type": "text", "class":"textarea col-10" }).appendTo($("#div" + i))
+    $("<input>").attr({ "id": "input" + i, "type": "text", "class":"col-10 textArea" }).appendTo($("#div" + i))
     $("<button>").text("Save").attr({ "type": "button", "id": "submit" + i, "class": "saveBtn clicked col-1" }).appendTo($("#div" + i))
     loadData(submitData)
     if (i < currentHour) {
@@ -52,7 +40,6 @@ function formCreator(i) {
         $("#input" + i).addClass("future")
     }
 }
-
 function scheduleCreator() {
     var time = timeStart
     for (var i = timeStart; i <= timeEnd; i++) {
@@ -75,11 +62,6 @@ function populateArray(submitData) {
     }
     return submitData
 }
-function startProgram() {
-    currentDate()
-    scheduleCreator()
-    populateArray(submitData)
-}
 function saveData(submitData) {
     submitData = populateArray(submitData)
     for (var i = timeStart; i <= timeEnd; i++)
@@ -99,8 +81,16 @@ function onButtonClick() {
     }
     return saveData(submitData)
 }
+function startProgram() {
+    currentDate()
+    scheduleCreator()
+    populateArray(submitData)
+}
+
 startProgram()
-$(".clicked").on("click", function () {
+$(".clicked").on("click", function (event) {
+    event.preventDefault()
     onButtonClick()
 })
+
 
