@@ -88,7 +88,7 @@ for(var i = timeStart; i<=timeEnd;i++)
 }
 
 function saveData(submitData) {
-    localStorage.setItem("dailyData", submitData)
+    localStorage.setItem("dailyData", JSON.stringify(submitData))
 }
 
 
@@ -97,10 +97,11 @@ for(var i = timeStart; i<=timeEnd;i++)
 {
 $("#submit"+i).on("click", function(submitData){
     submitData[i] = $("#input"+i).val()
-    localStorage.setItem("dailyData", JSON.stringify(submitData))
+    saveData(submitData)
 });
 }
 }
+
 populateArray(submitData) 
 onButtonClick()
 
