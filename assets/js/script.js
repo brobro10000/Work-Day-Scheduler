@@ -22,10 +22,10 @@ function currentDate() {
     }, 10);
 }
 function divCreator(i) {
-    return $("<div>").attr({ "class": "time-block description", "id": "div" + i }).appendTo($(".container"))
+    return $("<div>").attr({ "class": "row time-block description ", "id": "div" + i }).appendTo($(".container"))
 }
 function hourCreator(i, time, meridiem) {
-    return $("<h2>").text(time + meridiem).attr("class", "hour").appendTo($("#div" + i))
+    return $("<h2>").text(time + meridiem).attr("class", "hour col-1").appendTo($("#div" + i))
 }
 function populateTime(i, time) {
     if (i < 12) {
@@ -40,18 +40,16 @@ function populateTime(i, time) {
     }
     return time
 }
-
 function formCreator(i) {
-    $("<form>").attr({ "class": "row", "id": "form" + i }).appendTo($("#div" + i))
-    $("<input>").attr({ "id": "input" + i, "type": "text" }).appendTo($("#form" + i))
-    $("<button>").text("Save").attr({ "type": "button", "id": "submit" + i, "class": "saveBtn clicked" }).appendTo($("#form" + i))
+    $("<input>").attr({ "id": "input" + i, "type": "text", "class":"textarea col-10" }).appendTo($("#div" + i))
+    $("<button>").text("Save").attr({ "type": "button", "id": "submit" + i, "class": "saveBtn clicked col-1" }).appendTo($("#div" + i))
     loadData(submitData)
     if (i < currentHour) {
-        $("#input" + i).attr("class", "past")
+        $("#input" + i).addClass("past")
     } else if (i == currentHour) {
-        $("#input" + i).attr("class", "present")
+        $("#input" + i).addClass("present")
     } else if (i > currentHour) {
-        $("#input" + i).attr("class", "future")
+        $("#input" + i).addClass("future")
     }
 }
 
