@@ -29,17 +29,17 @@ This simple program is a great way to plan out your day! With an intuitive type 
 ![Input](assets/images/TextInputSS.PNG)
 
 
-- The values for each timing is dynamically added into local storage, even if the user has not entered a value in. The way the code is structured, eliminates the need for error checking. It also allows us to reuse the code structure to include a more dynamic scheduler to include multiple days, months and years giving the dynamic structre.
+- The values for each timing is dynamically added into local storage, even if the user has not entered a value in. The way the code is structured, eliminates the need for error checking. It also allows us to reuse the code structure to include a more dynamic scheduler to include multiple days, months and years giving the dynamic structure.
 
 ![localStorage](assets/images/localStorageSS.PNG)
 
 
-- Because its saved in localstorage, opening the page up again brings up our saved data!
+- Because its saved in local storage, opening the page up again brings up our saved data!
 
 ![localStorage2](assets/images/localStorage2SS.PNG)
 
 
-- Finally, the structure of the code allows us to consistently save to localstorage without facing indexing issues or worrying about data that may already exist.
+- Finally, the structure of the code allows us to consistently save to local storage without facing indexing issues or worrying about data that may already exist.
 
 ![localStorage3](assets/images/localStorage3SS.PNG)
 
