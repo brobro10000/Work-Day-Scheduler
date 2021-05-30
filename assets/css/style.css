@@ -67,3 +67,28 @@ body {
   background-color: #06AED5;
   color: white;
 }
+
+/*media query for smaller desktop screens and smaller*/
+@media screen and (max-width:1200px) {
+  .hour {
+    font-size: large;
+  }
+}
+
+/* MEDIA QUERY FOR TABLETS AND SMALLER */
+@media screen and (max-width: 993px) {
+  .hour{
+    font-size: medium;
+  }
+}
+
+/* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+@media screen and (max-width: 771px) {
+  .hour{
+    word-wrap: break-word;
+    font-size: small;
+  }
+  .saveBtn{
+    word-wrap: break-word;
+  }
+}
