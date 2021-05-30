@@ -73,7 +73,7 @@ Also determines meridiems and sets its value to append to hourCreator*/
 function scheduleCreator() {
     var time = timeStart
     for (var i = timeStart; i <= timeEnd; i++) {
-        time = populateTime(i, time, meridiem)
+        time = populateTime(i, time)
         divCreator(i)
         if (i < 12) {
             meridiem = "AM"
