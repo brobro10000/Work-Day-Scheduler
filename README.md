@@ -16,7 +16,7 @@ This simple program is a great way to plan out your day! With an intuitive type 
 
 - A simple layout allows the user to begin typing in the boxes layed out in rows. 
 
-![Layout](assets/images/layoutSS.PNG)
+![Layout](assets/images/LayoutSS.PNG)
 
 
 - The time on the top dictates the color of the boxes, if its grey, the time has elapsed, if its red, the time is current and if the box is green, the time is in the future. The time has been extended to display this capability.
