@@ -54,7 +54,7 @@ their respective div + i
 
 Finally, loadData loads the data in the local storage at this point*/
 function formCreator(i) {
-    $("<input>").attr({ "id": "input" + i, "type": "text", "class": "col-10 textArea" }).appendTo($("#div" + i))
+    $("<input>").attr({ "id": "input" + i, "type": "text", "class": "col-9 col-md-10 textArea" }).appendTo($("#div" + i))
     $("<button>").text("Save").attr({ "type": "button", "id": "submit" + i, "class": "saveBtn clicked col-1" }).appendTo($("#div" + i))
     loadData(submitData)
     if (i < currentHour) {
