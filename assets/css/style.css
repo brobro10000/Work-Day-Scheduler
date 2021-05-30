@@ -68,21 +68,24 @@ body {
   color: white;
 }
 
-/*media query for smaller desktop screens and smaller*/
+/*Media Queries based on behavior of bootstrap
+at ~1200, the grid model *shifts* inward*/
 @media screen and (max-width:1200px) {
   .hour {
     font-size: large;
   }
 }
 
-/* MEDIA QUERY FOR TABLETS AND SMALLER */
+/*Second media querie at ~993px the grid
+*shifts* inward*/
 @media screen and (max-width: 993px) {
   .hour{
     font-size: medium;
   }
 }
 
-/* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+/*Final media querie at ~771px the grid
+*shifts* inward*/
 @media screen and (max-width: 771px) {
   .hour{
     word-wrap: break-word;
