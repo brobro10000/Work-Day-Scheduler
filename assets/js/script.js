@@ -83,7 +83,6 @@ function formCreator(i) {
     $("<input>").attr({ "id": "input" + i, "type": "text", "class": "col-9 col-md-10 textArea" }).appendTo($("#div" + i))
     $("<button>").text("Save").attr({ "type": "button", "id": "submit" + i, "class": "saveBtn clicked col-1" }).appendTo($("#div" + i))
     loadData(submitData)
-    checkTime()
 }
 /*Interval runs checkTime every 15 seconds to update the background
 color of the input based on current time*/
@@ -99,6 +98,7 @@ function scheduleCreator() {
         hourCreator(i)
         formCreator(i)
     }
+    checkTime()
 }
 
 /*Populates submitData array with the inputs IDs passing functions to the 
