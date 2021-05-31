@@ -1,7 +1,6 @@
 //Variables for Program
 const timeStart = 9
 const timeEnd = 17
-var meridiem
 var submitData = {}
 
 /*Adds current time and date, time updates every 1 hundreths 
@@ -29,6 +28,7 @@ function hourCreator(i) {
 /*Correctly converts timing between 24 hour clock (00:00-24:00) to 12 hour
 Determines the meridiem and returns the time and meridiem*/
 function populateTime(i) {
+    var meridiem
     if (i < 12) {
         meridiem = "AM"
     }
