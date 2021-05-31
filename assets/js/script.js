@@ -1,7 +1,6 @@
 //Variables for Program
 const timeStart = 9
 const timeEnd = 17
-var currentHour = moment().format("HH")
 var meridiem
 var submitData = {}
 
@@ -55,6 +54,21 @@ function populateTime(i) {
     return i + meridiem
 }
 
+/*Implements logic for determining time of day by checking current
+timings against number at the end of the inputs ID, changes background color*/
+function checkTime() {
+    var currentHour = moment().format("HH")
+    for (var i = timeStart; i <= timeEnd; i++) {
+        if (i < currentHour) {
+            $("#input" + i).removeClass("present future").addClass("past")
+        } else if (i == currentHour) {
+            $("#input" + i).removeClass("past future").addClass("present")
+        } else if (i > currentHour) {
+            $("#input" + i).removeClass("past present").addClass("future")
+        }
+    }
+}
+
 /*Creates input and submit button for user input of daily task
 
 Also implements logic for determining time of day by checking current
@@ -69,14 +83,13 @@ function formCreator(i) {
     $("<input>").attr({ "id": "input" + i, "type": "text", "class": "col-9 col-md-10 textArea" }).appendTo($("#div" + i))
     $("<button>").text("Save").attr({ "type": "button", "id": "submit" + i, "class": "saveBtn clicked col-1" }).appendTo($("#div" + i))
     loadData(submitData)
-    if (i < currentHour) {
-        $("#input" + i).addClass("past")
-    } else if (i == currentHour) {
-        $("#input" + i).addClass("present")
-    } else if (i > currentHour) {
-        $("#input" + i).addClass("future")
-    }
+    checkTime()
 }
+/*Interval runs checkTime every 15 seconds to update the background
+color of the input based on current time*/
+setInterval(function () {
+    checkTime()
+}, 15000);
 
 /*Creates dynamic schedule html from functions defined above, first value
 determined by timeStart(9am) ending at timeEnd(5pm) in the for loop*/
