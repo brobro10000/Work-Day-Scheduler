@@ -35,12 +35,11 @@ function populateTime(i) {
     }
     else if (i >= 12) {
         meridiem = "PM"
-        if(i == 24)
-        meridiem = "AM"
+        if (i == 24)
+            meridiem = "AM"
     }
     if (i < 12) {
-        if(i == 0)
-        {
+        if (i == 0) {
             i = 12
             return i + meridiem
         }
