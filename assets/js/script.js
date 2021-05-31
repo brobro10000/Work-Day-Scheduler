@@ -21,26 +21,39 @@ function divCreator(i) {
     return $("<div>").attr({ "class": "row time-block description ", "id": "div" + i }).appendTo($(".container"))
 }
 
-/*Dynamically creates all h2 elements housing the hours, appends to div + i, i representing hour*/
-function hourCreator(i, time, meridiem) {
-    return $("<h2>").text(time + meridiem).attr("class", "hour col-1").appendTo($("#div" + i))
+/*Dynamically creates all h2 elements housing the hours, appends to div + i, i representing hour
+returns time and hour from populateTime function*/
+function hourCreator(i) {
+    return $("<h2>").text(populateTime(i)).attr("class", "hour col-1").appendTo($("#div" + i))
 }
 
-/*Correctly converts timing between 24 hour clock (00:00-24:00) to 12 hour, 
-12am/24:00 logic not implemented due to parameters of projects, anything 
-beyond 5pm or before 9am did not have to be accounted for*/
-function populateTime(i, time) {
+/*Correctly converts timing between 24 hour clock (00:00-24:00) to 12 hour
+Determines the meridiem and returns the time and meridiem*/
+function populateTime(i) {
     if (i < 12) {
-        return time
+        meridiem = "AM"
+    }
+    else if (i >= 12) {
+        meridiem = "PM"
+        if(i == 24)
+        meridiem = "AM"
+    }
+    if (i < 12) {
+        if(i == 0)
+        {
+            i = 12
+            return i + meridiem
+        }
+        return i + meridiem
     }
     if (i > 12) {
-        time %= 12
-        if (time == 0) {
-            time += 1
+        i %= 12
+        if (i == 0) {
+            i = 12
         }
-        return time
+        return i + meridiem
     }
-    return time
+    return i + meridiem
 }
 
 /*Creates input and submit button for user input of daily task
@@ -67,23 +80,12 @@ function formCreator(i) {
 }
 
 /*Creates dynamic schedule html from functions defined above, first value
-determined by timeStart(9am) ending at timeEnd(5pm) int he for loop
-
-Also determines meridiems and sets its value to append to hourCreator*/
+determined by timeStart(9am) ending at timeEnd(5pm) in the for loop*/
 function scheduleCreator() {
-    var time = timeStart
     for (var i = timeStart; i <= timeEnd; i++) {
-        time = populateTime(i, time)
         divCreator(i)
-        if (i < 12) {
-            meridiem = "AM"
-        }
-        else if (i >= 12) {
-            meridiem = "PM"
-        }
-        hourCreator(i, time, meridiem)
+        hourCreator(i)
         formCreator(i)
-        time++
     }
 }
 
