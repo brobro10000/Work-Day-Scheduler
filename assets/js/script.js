@@ -1,6 +1,6 @@
 //Variables for Program
-const timeStart = 9
-const timeEnd = 17
+const timeStart = 0
+const timeEnd = 24
 var submitData = {}
 
 /*Adds current time and date, time updates every 1 hundreths 
